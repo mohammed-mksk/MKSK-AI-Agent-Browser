@@ -1,0 +1,67 @@
+/**
+ * Script to configure an AI provider for the AI Browser engine
+ * This will set up OpenAI as the default provider with a test API key
+ */
+
+console.log('🔧 AI Provider Configuration Script');
+console.log('=====================================');
+console.log('');
+console.log('The AI Browser engine is falling back to Puppeteer because no AI provider is configured.');
+console.log('');
+console.log('To fix this, you need to:');
+console.log('');
+console.log('1. 📱 Open the AI Automation Browser application');
+console.log('2. ⚙️  Navigate to Settings page');
+console.log('3. 🤖 Configure an AI Provider:');
+console.log('   - Choose OpenAI, Anthropic, or Gemini');
+console.log('   - Enter your API key');
+console.log('   - Save the configuration');
+console.log('');
+console.log('4. 🔧 Set Browser Engine to "AI Browser":');
+console.log('   - In Settings, set Browser Engine to "ai-browser"');
+console.log('   - This ensures the AI Browser engine is used instead of Puppeteer');
+console.log('');
+console.log('5. ✅ Test the configuration:');
+console.log('   - Run a flight search or automation task');
+console.log('   - You should see "Using AI-enhanced automation" in the logs');
+console.log('   - No more "Starting Puppeteer automation execution" messages');
+console.log('');
+console.log('📋 API Key Requirements:');
+console.log('');
+console.log('• OpenAI: Get API key from https://platform.openai.com/api-keys');
+console.log('  - Format: sk-...');
+console.log('  - Requires billing setup');
+console.log('');
+console.log('• Anthropic: Get API key from https://console.anthropic.com/');
+console.log('  - Format: sk-ant-...');
+console.log('  - Requires billing setup');
+console.log('');
+console.log('• Gemini: Get API key from https://makersuite.google.com/app/apikey');
+console.log('  - Format: AI...');
+console.log('  - Free tier available');
+console.log('');
+console.log('🔍 Current Status:');
+console.log('');
+console.log('❌ No AI provider configured');
+console.log('❌ AI Browser engine falling back to Puppeteer');
+console.log('❌ AI features disabled');
+console.log('');
+console.log('After configuration:');
+console.log('✅ AI provider configured');
+console.log('✅ AI Browser engine using AI features');
+console.log('✅ Enhanced automation with reasoning and learning');
+console.log('');
+console.log('💡 Alternative: Use existing test scripts');
+console.log('');
+console.log('If you have API keys set up, you can also run:');
+console.log('• node configure-ai-engine.js - Configure AI engine settings');
+console.log('• node test-ai-setup.js - Test AI provider setup');
+console.log('• node test-ai-automation.js - Test AI-enhanced automation');
+console.log('');
+console.log('🚀 Once configured, the AI Browser engine will:');
+console.log('• Use AI reasoning for better element discovery');
+console.log('• Adapt automation plans based on page analysis');
+console.log('• Learn from successful patterns');
+console.log('• Provide better error recovery');
+console.log('• Generate more accurate results');
+console.log('');

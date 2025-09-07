@@ -1,0 +1,41 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/main",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": [
+    "src/main/main.ts",
+    "src/main/services/FieldDetectionService.ts",
+    "src/main/services/Logger.ts",
+    "src/main/services/AICommandParser.ts",
+    "src/main/services/BrowserAutomationEngine.ts",
+    "src/main/ipc/fieldDetectionHandlers.ts",
+    "src/main/ipc/automationHandlers.ts",
+    "src/main/ipc/settingsHandlers.ts",
+    "src/main/ipc/aiHandlers.ts",
+    "src/main/ipc/securityHandlers.ts"
+  ],
+  "exclude": [
+    "src/preload/**/*",
+    "src/renderer/**/*",
+    "src/main/services/__tests__/**/*",
+    "src/main/services/**/*.test.ts",
+    "src/main/services/CaptchaBotDetectionHandler.ts",
+    "src/main/services/DataAggregationSystem.ts", 
+    "src/main/services/SecurityValidationSystem.ts",
+    "node_modules",
+    "dist"
+  ]
+}

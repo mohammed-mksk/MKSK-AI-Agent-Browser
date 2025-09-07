@@ -1,0 +1,36 @@
+{
+  "defaultEngine": "ai-browser",
+  "enginePriority": [
+    "ai-browser",
+    "browseruse",
+    "puppeteer"
+  ],
+  "aiConfiguration": {
+    "provider": "openai",
+    "model": "gpt-4",
+    "temperature": 0.1,
+    "maxTokens": 4000,
+    "enableLearning": true,
+    "enableMultiSite": true,
+    "performanceOptimization": true
+  },
+  "browserConfiguration": {
+    "headless": false,
+    "timeout": 60000,
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    },
+    "enableStealth": true
+  },
+  "features": {
+    "aiReasoning": true,
+    "elementDiscovery": true,
+    "adaptivePlanning": true,
+    "memorySystem": true,
+    "errorRecovery": true,
+    "multiSiteCoordination": true,
+    "naturalLanguageProcessing": true
+  },
+  "timestamp": "2025-07-23T15:27:51.474Z"
+}

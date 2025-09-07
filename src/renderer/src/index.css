@@ -1,0 +1,375 @@
+@import 'antd/dist/reset.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Glassmorphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Custom button styles */
+.gradient-button {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Status indicators */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.status-success {
+  background-color: #52c41a;
+}
+
+.status-error {
+  background-color: #ff4d4f;
+}
+
+.status-warning {
+  background-color: #faad14;
+}
+
+.status-processing {
+  background-color: #1890ff;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Code block styling */
+.code-block {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .glass-card {
+    margin: 8px;
+    border-radius: 8px;
+  }
+}
+
+/* Results Display Styles */
+.results-display .result-card {
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.results-display .result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.results-table .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.results-table .ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.detail-modal .ant-modal-content {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.detail-modal .ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.detail-modal .ant-modal-title {
+  color: white !important;
+}
+
+.detail-modal .ant-modal-close {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.detail-modal .ant-modal-close:hover {
+  color: white !important;
+}
+
+.detail-modal .ant-tabs-tab {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.detail-modal .ant-tabs-tab-active {
+  color: white !important;
+}
+
+.detail-modal .ant-tabs-ink-bar {
+  background: #1890ff !important;
+}
+
+/* Screenshot gallery styles */
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.screenshot-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.screenshot-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.screenshot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.screenshot-item:hover .screenshot-overlay {
+  opacity: 1;
+}
+
+/* Data type badges */
+.data-type-text { background: linear-gradient(45deg, #1890ff, #40a9ff); }
+.data-type-table { background: linear-gradient(45deg, #52c41a, #73d13d); }
+.data-type-form { background: linear-gradient(45deg, #faad14, #ffc53d); }
+.data-type-image { background: linear-gradient(45deg, #722ed1, #9254de); }
+.data-type-link { background: linear-gradient(45deg, #13c2c2, #36cfc9); }
+.data-type-structured { background: linear-gradient(45deg, #eb2f96, #f759ab); }
+
+/* Confidence indicators */
+.confidence-high { color: #52c41a !important; }
+.confidence-medium { color: #faad14 !important; }
+.confidence-low { color: #ff4d4f !important; }
+
+/* Export button group */
+.export-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.export-buttons .ant-btn {
+  transition: all 0.3s ease;
+}
+
+.export-buttons .ant-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ant Design customizations */
+.ant-layout {
+  background: transparent !important;
+}
+
+.ant-layout-header {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ant-layout-sider {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+}
+
+.ant-menu {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ant-menu-item {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.ant-menu-item-selected {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.ant-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.ant-input,
+.ant-input-affix-wrapper {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+.ant-input::placeholder,
+.ant-input-affix-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  border: none !important;
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(45deg, #5a6fd8, #6a4190) !important;
+  transform: translateY(-1px);
+}
+
+.ant-table {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.1) !important;
+}

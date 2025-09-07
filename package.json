@@ -1,0 +1,172 @@
+{
+  "name": "ai-automation-browser",
+  "version": "1.0.0",
+  "description": "AI-powered browser automation tool for web tasks via natural language commands",
+  "main": "dist/main/main/main.js",
+  "type": "module",
+  "scripts": {
+    "install-all": "npm install && cd src/renderer && npm install",
+    "dev": "concurrently \"npm:dev:main\" \"npm:dev:renderer\"",
+    "dev:main": "tsc -p tsconfig.main.json --watch",
+    "dev:renderer": "cd src/renderer && npm run dev",
+    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:preload": "tsc -p tsconfig.preload.json",
+    "build:renderer": "cd src/renderer && npm run build",
+    "start": "npm run build && electron dist/main/main/main.js",
+    "start:dev": "npm run build:main && electron dist/main/main/main.js",
+    "package": "npm run build && electron-builder",
+    "package:win": "npm run build && electron-builder --win",
+    "package:portable": "npm run build && electron-builder --win portable",
+    "package:nsis": "npm run build && electron-builder --win nsis",
+    "package:all": "npm run build && electron-builder --win --x64 --ia32",
+    "dist": "npm run build && electron-builder --publish=never",
+    "dist:win": "npm run build && electron-builder --win --publish=never",
+    "publish": "npm run build && electron-builder --publish=always",
+    "deploy": "node scripts/deploy.js",
+    "deploy:fast": "node scripts/deploy.js --skip-tests",
+    "deploy:all": "node scripts/deploy.js --targets all",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:unit": "jest --testPathPattern=src/main/services/__tests__",
+    "test:integration": "jest --testPathPattern=src/__tests__/integration",
+    "test:e2e": "jest --testPathPattern=src/__tests__/e2e",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "clean": "rimraf dist dist-electron"
+  },
+  "keywords": [
+    "automation",
+    "browser",
+    "ai",
+    "puppeteer",
+    "electron",
+    "web-scraping"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "@playwright/test": "^1.54.1",
+    "axios": "^1.7.9",
+    "browser-use": "^0.0.1",
+    "browser-use-play": "^1.0.7",
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.6.2",
+    "log4js": "^6.9.1",
+    "nanoid": "^5.0.9",
+    "openai": "^4.0.0",
+    "playwright": "^1.54.1",
+    "puppeteer-core": "^24.4.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.0.0",
+    "@types/puppeteer-core": "^5.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "puppeteer": "^22.15.0",
+    "rimraf": "^5.0.0",
+    "supertest": "^6.3.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.8.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.ai-automation-browser.app",
+    "productName": "AI Automation Browser",
+    "copyright": "Copyright © 2024 AI Automation Browser",
+    "directories": {
+      "output": "dist-electron",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/dist/**/*",
+      "!src/**/*",
+      "!**/*.ts",
+      "!**/*.map",
+      "!node_modules/**/*",
+      "!src/renderer/node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "publisherName": "AI Automation Browser",
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AI Automation Browser",
+      "include": "build/installer.nsh",
+      "perMachine": false,
+      "menuCategory": "Productivity",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "license": "build/license.txt",
+      "warningsAsErrors": false
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.${ext}",
+      "requestExecutionLevel": "user"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "your-github-username",
+      "repo": "ai-automation-browser",
+      "releaseType": "release"
+    },
+    "compression": "maximum",
+    "npmRebuild": false,
+    "buildVersion": "1.0.0",
+    "electronVersion": "31.7.7",
+    "forceCodeSigning": false,
+    "afterSign": "build/notarize.js",
+    "afterAllArtifactBuild": "build/after-build.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
