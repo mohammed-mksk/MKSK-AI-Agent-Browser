@@ -81,11 +81,6 @@ Other options:
 
 Note: `.gitignore` currently ignores `build/`. If you want to track packaging configs in GitLab, remove `build/` from `.gitignore` or replace it with a narrower ignore (e.g., keep `build/` but ignore `build/*.p12`). Certificates are not included in this copy.
 
-## Repository Notes
-- This folder was created from the original project while omitting internal docs, tests, screenshots, logs, and generated outputs.
-- The app will regenerate `dist/` on build commands; generate your own `.env` from `.env.example` locally.
-- If you need additional items excluded or included for GitLab, update the `.gitignore` and/or let us know what to adjust.
-
 ## License
 See `package.json` for license metadata.
 
